@@ -1,20 +1,26 @@
 #include <stdio.h>
 
 int main() {
-    int n, tab[] = {5, 9, 3, 7, 1, 9};
-    int i, max = tab[0], second = -1e9;
+    int n;
+    scanf("%d", &n);  // Lire la taille du tableau
 
-    scanf("%d", &n);
+    int arr[n];
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);  // Lire les éléments du tableau
+    }
 
-    for (i = 1; i < n; i++) {
-        if (tab[i] > max) {
-            second = max;
-            max = tab[i];
-        } else if (tab[i] > second && tab[i] < max) {
-            second = tab[i];
+    int max = arr[0];
+    int second_max = arr[0];
+
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > max) {
+            second_max = max;
+            max = arr[i];
+        } else if (arr[i] > second_max && arr[i] != max) {
+            second_max = arr[i];
         }
     }
 
-    printf("Le deuxième plus grand nombre est : %d\n", second);
+    printf("Le deuxième plus grand nombre est : %d\n", second_max);
     return 0;
 }
