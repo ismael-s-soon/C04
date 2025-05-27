@@ -2,25 +2,31 @@
 
 int main() {
     int n;
-    scanf("%d", &n);  // Lire la taille du tableau
+    scanf("%d", &n);
 
-    int arr[n];
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);  // Lire les éléments du tableau
+    if(n < 2) {
+        printf("Il faut au moins deux éléments.\n");
+        return 1;
     }
 
-    int max = arr[0];
-    int second_max = arr[0];
+    int max, second, x;
+    scanf("%d %d", &max, &second);
+    if(max < second) {
+        int temp = max;
+        max = second;
+        second = temp;
+    }
 
-    for (int i = 1; i < n; i++) {
-        if (arr[i] > max) {
-            second_max = max;
-            max = arr[i];
-        } else if (arr[i] > second_max && arr[i] != max) {
-            second_max = arr[i];
+    for(int i = 2; i < n; i++) {
+        scanf("%d", &x);
+        if(x > max) {
+            second = max;
+            max = x;
+        } else if(x > second && x != max) {
+            second = x;
         }
     }
 
-    printf("Le deuxième plus grand nombre est : %d\n", second_max);
+    printf("Le deuxième plus grand nombre est : %d\n", second);
     return 0;
 }
