@@ -1,23 +1,24 @@
 #include <stdio.h>
 
 int main() {
-    int n, i;
-    int tab[] = {3, 7, 2, 9, 4, 9}; // tableau avec des valeurs codées
-    int max = tab[0];
-    int second_max = -1;
+    int n;
+    int tab[] = {3, 7, 2, 9, 4, 9};
+    int i, max, second;
 
-    scanf("%d", &n); // Lire uniquement le nombre d'éléments (6 ici)
+    scanf("%d", &n); // Lire le nombre d'éléments
+
+    max = second = tab[0];
 
     for (i = 1; i < n; i++) {
         if (tab[i] > max) {
-            second_max = max;
+            second = max;
             max = tab[i];
-        } else if (tab[i] > second_max && tab[i] < max) {
-            second_max = tab[i];
+        } else if (tab[i] > second && tab[i] < max) {
+            second = tab[i];
         }
     }
 
-    printf("Le deuxième plus grand nombre est : %d\n", second_max);
+    printf("Le deuxième plus grand nombre est : %d\n", second);
 
     return 0;
 }
