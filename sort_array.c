@@ -1,36 +1,41 @@
-#include <stdio.h>
+#include <stdio.h> // Inclusion de la bibliothèque standard d'entrée/sortie
 
 int main() {
-    int n, i, j, temp;
+    int n, i, j, temp; // Déclaration des variables :
+                       // n : nombre d'éléments à trier
+                       // i, j : indices pour les boucles
+                       // temp : variable temporaire pour les échanges
 
-    // Lecture du nombre d'éléments
-    scanf("%d", &n);
+    scanf("%d", &n); // Lecture du nombre d'éléments à trier depuis l'entrée standard
 
-    int tableau[n];  // Déclaration du tableau
+    int t[n]; // Déclaration d’un tableau de taille n pour stocker les entiers
 
-    // Lecture des éléments
+    // Boucle pour lire les n éléments du tableau
     for(i = 0; i < n; i++) {
-        scanf("%d", &tableau[i]);
+        scanf("%d", &t[i]); // Stockage de chaque entier dans le tableau t
     }
 
-    // Tri à bulles : parcours du tableau à plusieurs reprises
-    for(i = 0; i < n - 1; i++) {
-        for(j = 0; j < n - i - 1; j++) {
-            if(tableau[j] > tableau[j + 1]) {
-                // Échange des éléments s'ils sont dans le mauvais ordre
-                temp = tableau[j];
-                tableau[j] = tableau[j + 1];
-                tableau[j + 1] = temp;
+    // Début du tri à bulles (Bubble Sort)
+    // Cette méthode consiste à comparer les éléments deux à deux
+    // et à les échanger s'ils ne sont pas dans le bon ordre
+
+    for(i = 0; i < n - 1; i++) { // Répéter le processus n-1 fois
+        for(j = 0; j < n - i - 1; j++) { // Parcourir le tableau jusqu'à l'élément déjà trié
+            if(t[j] > t[j + 1]) { // Si l’élément actuel est plus grand que le suivant
+                // Échange des deux éléments
+                temp = t[j];         // Stocker t[j] temporairement
+                t[j] = t[j + 1];     // Déplacer t[j + 1] à la position t[j]
+                t[j + 1] = temp;     // Mettre temp (ancien t[j]) à la position t[j + 1]
             }
         }
     }
 
-    // Affichage du tableau trié
-    printf("Tableau trié : ");
+    // Affichage des éléments triés
     for(i = 0; i < n; i++) {
-        printf("%d ", tableau[i]);
+        printf("%d ", t[i]); // Afficher chaque élément suivi d’un espace
     }
-    printf("\n");
 
-    return 0;
+    printf("\n"); // Saut de ligne après l’affichage
+
+    return 0; // Fin du programme avec code de retour 0 (succès)
 }
