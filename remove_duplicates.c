@@ -1,45 +1,37 @@
-#include <stdio.h>
+#include <stdio.h> // Pour les fonctions scanf et printf
 
 int main() {
-    int n, i, j, k;
-    
-    // Lecture du nombre d'éléments
-    scanf("%d", &n);
+    int n, i, j;                       // n = nombre d'éléments, i/j = compteurs
+    scanf("%d", &n);                   // Lire combien d'éléments seront saisis
 
-    int tableau[n];  // Tableau initial
-    int unique[n];   // Tableau pour stocker les éléments sans doublon
-    int taille_unique = 0;
+    int tableau[n];                   // Tableau d’origine
+    int unique[n];                    // Tableau pour stocker les valeurs uniques
+    int taille_unique = 0;            // Compte combien de valeurs uniques
 
-    // Lecture des éléments du tableau
     for(i = 0; i < n; i++) {
-        scanf("%d", &tableau[i]);
+        scanf("%d", &tableau[i]);     // Lire chaque élément et le stocker
     }
 
-    // Parcours du tableau pour supprimer les doublons
     for(i = 0; i < n; i++) {
-        int est_doublon = 0;
+        int est_doublon = 0;          // Variable pour savoir si c’est un doublon
 
-        // Comparer avec les éléments déjà dans le tableau unique
         for(j = 0; j < taille_unique; j++) {
-            if(tableau[i] == unique[j]) {
-                est_doublon = 1;  // Doublon trouvé
-                break;
+            if(tableau[i] == unique[j]) { // Si l’élément existe déjà dans "unique"
+                est_doublon = 1;      // On note que c’est un doublon
+                break;                // On arrête la recherche
             }
         }
 
-        // Si ce n’est pas un doublon, on l’ajoute au tableau unique
-        if(!est_doublon) {
-            unique[taille_unique] = tableau[i];
-            taille_unique++;
+        if(!est_doublon) {            // Si ce n’est pas un doublon
+            unique[taille_unique++] = tableau[i]; // On l’ajoute au tableau unique
         }
     }
 
-    // Affichage du tableau sans doublons
     printf("Après suppression des doublons : ");
     for(i = 0; i < taille_unique; i++) {
-        printf("%d ", unique[i]);
+        printf("%d ", unique[i]);     // Afficher chaque valeur unique
     }
-    printf("\n");
+    printf("\n");                     // Aller à la ligne après l’affichage
 
-    return 0;
+    return 0;                         // Fin normale du programme
 }
